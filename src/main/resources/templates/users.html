@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<h3>Просмотр</h3>
+<div th:each="user:${users}">
+    <p>Логин: <span th:text="${user.login}"/></p>
+    <p>Роль: <span th:text="${user.role.getDisplayName()}"/></p>
+
+    <form action="/api/v1.0/users/edit" target="_blank" method="get">
+        <input type="hidden" name="userId" th:value="${user.id}">
+        <button type="submit">Изменить</button>
+    </form>
+    <form action="/api/v1.0/users/block" method="get">
+        <input type="hidden" name="userId" th:value="${user.id}">
+        <button type="submit">Блокировать</button>
+    </form>
+    <br>
+</div>
+<hr>
+
+
+<h3> Сохранение</h3>
+<form th:action="@{/api/v1.0/users}" method="post">
+    <p>Login
+        <label>
+            <input type="text" name="login" placeholder="Login">
+        </label>
+    </p>
+    <p>Password
+        <label>
+            <input type="text" name="password" placeholder="Password">
+        </label>
+    </p>
+    <p>Role
+        <label>
+            <select name="role">
+                <option value="ADMIN">Администратор</option>
+                <option value="OPERATOR">Оператор</option>
+                <option value="METER">Счетчик</option>
+            </select>
+        </label>
+    </p>
+    <button type="submit" formmethod="post">Сохранить</button>
+</form>
+<hr>
+</body>
+</html>

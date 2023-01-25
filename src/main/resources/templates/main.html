@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+</head>
+<body>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+<br>
+<a th:href="@{/api/v1.0/excell}">Скачать Excell отчет</a>
+<br>
+<a th:href="@{/api/v1.0/group}">Посмотреть группы</a>
+<br>
+<a th:href="@{/api/v1.0/read}">Отправить данные в Excell</a>
+<br>
+<a th:href="@{/api/v1.0/report}">Посмотреть отчет</a>
+<br>
+<a th:href="@{/api/v1.0/users}">Работa с пользователями</a>
+</body>
+</html>
